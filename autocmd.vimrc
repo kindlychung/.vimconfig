@@ -11,8 +11,6 @@ augroup prepostprocess
     autocmd!
     autocmd BufWritePre <buffer> call StripTrailingWhitespace()
     autocmd BufWritePre <buffer> :echom expand("%:p")
-	" update timestamps of each buffer before exit vim
-    autocmd VimLeavePre <buffer> :!touch %:p
 augroup END
 
 augroup filetypes
