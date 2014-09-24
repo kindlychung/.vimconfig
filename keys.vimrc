@@ -95,5 +95,8 @@ function! Auto_complete_opened()
 endfunction
 inoremap <expr> <Nul> Auto_complete_string()
 
-
-
+" vimrepress (post to blogs) settings
+nnoremap <leader>bn :BlogNew<cr><cr>
+nnoremap <leader>bl :BlogList<cr><cr>
+nnoremap <leader>bv :BlogPreview<cr><cr>
+nnoremap <leader>bp :BlogSave publish<cr><cr>

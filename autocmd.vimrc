@@ -23,6 +23,8 @@ augroup filetypes
     au! BufRead,BufNewFile *.mma      set ft=mma sw=2
 augroup END
 
+" au BufNewFile,BufRead *.md  setf markdown
+au BufNewFile,BufRead *.txt  set ft=html
 
 
 

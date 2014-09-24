@@ -8,13 +8,13 @@ set autowriteall
 set background=dark
 set backspace=indent,eol,start
 set backspace=indent,eol,start " Backspace for dummies
-set clipboard=unnamedplus
 set cmdheight=1
 set completeopt=longest,menu
 set complete-=i
 set encoding=UTF-8
 set fo+=n                     " Format numbered lists
 set fo-=c
+set dict+=/usr/share/dict/words
 " set foldmethod=marker
 set guioptions-=l
 set guioptions-=L              " turn off left scrollbar
@@ -65,6 +65,15 @@ let g:clang_complete_macro = 1
 let g:VimuxOrientation = "h"
 let g:VimuxHeight = "50"
 
+
+python << eof
+import platform
+import vim
+osname = platform.system()
+if osname == "Linux":
+    vim.command('set clipboard=unnamedplus')
+eof
+
 if &term =~ "xterm" || &term =~ "256" || $DISPLAY != ""
    set t_Co=256
 endif
@@ -102,15 +111,23 @@ let vimrplugin_assign = 0
 " let vimrplugin_screenplugin = 0
 let g:tex_conceal = ""
 
-
 scriptencoding utf-8
 syntax enable
 filetype indent on " per-filetype config
 filetype plugin on " per-filetype config
 
 " konsole CursorShape change with mode
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+" let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+" let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 " Youcompleteme python autocomplete disable
 " let g:pymode_rope_complete_on_dot = 0
+"
+
+" D autocomplete settings (vim-dutyl plugin)
+let g:dutyl_stdImportPaths=['/usr/share/dmd/src/']
+call dutyl#register#tool('dcd-client','/usr/local/bin/dcd-client')
+call dutyl#register#tool('dcd-server','/usr/local/bin/dcd-server')
+
+
+colorscheme solarized
